@@ -7,24 +7,24 @@
 		<script type="text/javascript">
 			'use strict';
 			// Script here
-			var canvas = document.getElementById('canvas1');
-			var ctx = canvas.getContext('2d');
+			var canvas = document.getElementById('canvas1'); // канвас
+			var ctx = canvas.getContext('2d'); // контекст
 
-			function drawColoredBar(color, x, y, width, height) {
-				ctx.fillStyle = color;
-				ctx.fillRect (x, y, width, height);
+			function drawColoredBar(color, x, y, width, height) {  // обозначение функции (цвет,x, y (координаты), ширина, высота)
+				ctx.fillStyle = color; // цвет, картинка, градиент
+				ctx.fillRect (x, y, width, height);  // fillRect метод, () параметры
 			}
 
-			var draw70x50Bar			 = function(color, x, y) {
-				drawColoredBar(color, x, y, 70, 50);
+			var draw70x50Bar			 = function(color, x, y) { // функция присваивается в переменную
+				drawColoredBar(color, x, y, 70, 50); // координаты неизвестны, ширина и высота 70 и 50
 			};
 
-			var drawVerticalLine	 = function(color, x, width) {
-				 drawColoredBar(color, x, 0, width, canvas.height);
+			var drawVerticalLine	 = function(color, x, width) {  
+				 drawColoredBar(color, x, 0, width, canvas.height);  // canvas.height - вся высота, 0 - отступ сверху
 			};
 
 			var drawHorizontalLine = function(color, y, height) {
-				drawColoredBar(color, 0, y, canvas.width, height);
+				drawColoredBar(color, 0, y, canvas.width, height);  // вся ширина, отступ от края
 			};
 
 			var myBlue		 = "rgb(135,206,235)",
@@ -32,11 +32,11 @@
 					myPink		 = "rgb(255,105,180)";
 
 
-			draw70x50Bar(myBlue,		 10, 20);
+			draw70x50Bar(myBlue,		 10, 20);  // ширина и высота заданы, назначается только отступ
 			draw70x50Bar(myDarkBlue, 30, 40);
 			draw70x50Bar(myPink,		 50, 60);
 
-			drawVerticalLine(myPink, canvas.width / 2 - 10, 20);
+			drawVerticalLine(myPink, canvas.width / 2 - 10, 20);  // расположеие по середине
 			drawHorizontalLine(myDarkBlue, canvas.height / 2 - 10, 20);			
 
 		</script>
