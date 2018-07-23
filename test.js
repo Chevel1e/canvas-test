@@ -43,12 +43,26 @@ ctx.fillRect (695, 40, 70, 50);
 ctx.fillStyle = "rgb(255,105,180)";
 ctx.fillRect (675, 60, 70, 50);
 
-ctx.fillStyle = "rgb(255,105,180)";
+ctx.fillStyle = "rgb(135,206,235)";
+ctx.fillRect (360, 0, 20, 600);
+
+ctx.strokeStyle = "pink";
+ctx.strokeRect (360, 0, 20, 600);
+
+ctx.fillStyle = "rgb(135,206,235)";
+ctx.fillRect (420, 0, 20, 600);
+
+ctx.strokeStyle = "pink";
+ctx.strokeRect (420, 0, 20, 600);
+
+ctx.fillStyle = "rgb(255,105,180)"; // 
 ctx.fillRect (0, 290, 800, 20);
+
+ctx.strokeStyle = "rgb(135,206,235)"; 
+ctx.strokeRect (0, 290, 800, 20);
 
 ctx.fillStyle = "rgb(135,206,235)";
 ctx.fillRect (390, 0, 20, 600);
 
 ctx.strokeStyle = "pink";
 ctx.strokeRect (390, 0, 20, 600);
-
