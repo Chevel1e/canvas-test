@@ -24,16 +24,16 @@
 			};
 
 			var drawHorizontalLine = function(color, y, height) {
-				drawColoredBar(color, 0, y, canvas.width, height);  // вся ширина, отступ от края
+				drawColoredBar(color, 0, y, canvas.width, height);  // вся ширина, отступ от края 0
 			};
 
-			var myBlue		 = "rgb(135,206,235)",
+			var    myBlue	 = "rgb(135,206,235)",
 					myDarkBlue = "rgb(135,106,300)",
 					myPink		 = "rgb(255,105,180)";
 
 
 			draw70x50Bar(myBlue,		 10, 20);  // ширина и высота заданы, назначается только отступ
-			draw70x50Bar(myDarkBlue, 30, 40);
+			draw70x50Bar(myDarkBlue,     30, 40);
 			draw70x50Bar(myPink,		 50, 60);
 
 			drawVerticalLine(myPink, canvas.width / 2 - 10, 20);  // расположеие по середине

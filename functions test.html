@@ -10,25 +10,37 @@
 			var canvas = document.getElementById('canvas1'); // канвас
 			var ctx = canvas.getContext('2d'); // контекст
             
-            function drawColoredBar(color, x, y, width, height) {
-            	ctx.fillStyle = color;
-            	ctx.fillRect (x, y, width, height);
+            function drawColoredBar(color, x, y, width, height) {  // обозначение функции (цвет,x, y (координаты), ширина, высота)
+				ctx.fillStyle    = color; 
+				ctx.fillRect       (x, y, width, height); 
+            }
+
+            function drawLine(color, lineWidth, dash, x, y, width, height) {
+            	ctx.strokeStyle =  color;
+                ctx.lineWidth   =  lineWidth;
+                ctx.setLineDash    (dash);
+                ctx.strokeRect     (x, y, width, height);
             }
 
             function drawClearBar(x, y, width, height) {
-            	ctx.clearRect (x, y, width, height);
+            	ctx.clearRect      (x, y, width, height);
             }
 
-            var draw70x50Bar        = function(color, x, y) {
+
+            var draw70x50Bar   = function(color, x, y) {
             	drawColoredBar(color, x, y, 70, 50);  
             }; 
 
-            var draw20x20ClearBar   = function(x, y) {
-            	drawClearBar(x, y, 20, 20);
+            var drawColoredLine = function(color, x, y, width, height) {
+            	drawLine(color, 4, ([5,5]), x, y, width, height);
             };
 
 
-            var drawVerticalLine    = function(color, x, width) {
+            var draw20x20ClearBar = function(x, y) {
+            	drawClearBar(x, y, 20, 20);
+            };
+
+            var drawVerticalLine   = function(color, x, width) {
             	drawColoredBar(color, x, 0, width, canvas.height);
             };
 
@@ -37,25 +49,28 @@
             };
 
              var    myBlue	   = "rgb(135,206,235)",
-					myDarkBlue = "rgb(135,106,300)",
+					myDarkBlue = "rgba(135,106,300,0.5)",
 					myPurple   = "rgb(230,204,255)",
-					myPink     = "rgb(255,105,180)";
+					myPink     = "rgba(255,105,180,0.5)";
 
-            
+    
+
             draw70x50Bar(myBlue,       10, 20);
             draw70x50Bar(myDarkBlue,   30, 40);
             draw70x50Bar(myPink,       50, 60);
             draw70x50Bar(myPurple,     70, 80);
             draw20x20ClearBar(         95, 95);
 
+            drawHorizontalLine (myPink,     canvas.height / 2, 50);
 
             drawVerticalLine   (myDarkBlue, 380,               10);  
             drawVerticalLine   (myDarkBlue, 420,               10); 
             drawVerticalLine   (myPink,     canvas.width / 2,  10); // цвет, ширина канвы / 2, ширина линии, высота линии
-            drawHorizontalLine (myPink,     canvas.height / 2, 50);
             drawVerticalLine   (myPurple,   390,               10);
             drawVerticalLine   (myPurple,   410,               10);  
 
+            drawColoredLine    (myDarkBlue,      0, 300, canvas.width, 50);
+            drawColoredLine    (myDarkBlue,      canvas.width / 2, 0, 10, canvas.height); 
 
 
         </script>
