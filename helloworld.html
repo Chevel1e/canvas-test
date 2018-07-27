@@ -1,0 +1,98 @@
+<html>
+	<head>
+		<meta charset="utf8">
+	</head>
+	<body>
+		<canvas id="canvas1" width="800" height="600" style="border: 3px solid black;"></canvas>
+		<script type="text/javascript">
+			'use strict';
+			// Script here
+			var canvas = document.getElementById('canvas1'); // канвас
+			var ctx = canvas.getContext('2d'); // контекст
+			var bgr = canvas.background
+
+			function drawColoredBar(color, x, y, width, height) {  
+				ctx.fillStyle    = color; 
+				ctx.fillRect    (x, y, width, height); 
+            }
+            
+            function drawLine(color, lineWidth, dash, x, y, width, height) {
+            	ctx.strokeStyle =  color;
+                ctx.lineWidth   =  lineWidth;
+                ctx.setLineDash    (dash);
+                ctx.strokeRect     (x, y, width, height);
+            }
+
+            // var background = function {
+            	// drawColoredBar "rgb(132,112,255)", canvas.width, canvas.height, 0, 0;  // как залить фон?
+           // }
+
+
+            
+            
+
+
+
+
+
+
+			// Hello World
+
+            var text = 'Hello world!';
+
+			var img = new Image();
+			img.src = 'https://images.wallpaperscraft.com/image/stars_space_sky_glitter_116409_1920x1080.jpg';
+
+			var a = 0;
+			img.onload = function() {
+			  
+			var pattern = ctx.createPattern(img, 'repeat');    
+
+			  
+			ctx.font = '32px arial black';
+
+			  
+			var textMetrics = ctx.measureText(text);
+			  
+			var height = 70;
+			  
+			var width  = textMetrics.width;
+			  
+			var x = null, y = null;
+
+			  
+			var interval = setInterval(function() {
+			    if (null != x) {
+			      ctx.fillStyle='white';
+			      
+			ctx.fillRect(90 + x, 50 + y, width, height);
+			    }
+
+			    a++;
+			    x = 100 * Math.sin(a * 3.14 / 240);
+			    y = 50 * Math.sin(a * 3.14 / 108);   
+
+			    
+			ctx.fillStyle = pattern;
+			    ctx.fillText(text, 90 + x, 100 + y);
+			  }, 15);
+			};
+
+
+
+
+
+        </script>
+	</body>
+ </html>
+
+
+
+
+
+
+
+
+
+
+
