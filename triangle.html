@@ -1,0 +1,32 @@
+<html>
+  <head>
+  	<meta charset="utf8">
+  </head>
+  <body>
+    <canvas id="canvas1" width="800" height="600" style="border: 1px solid black;"></canvas>
+    <script type="text/javascript">
+    	'use strict';
+    	// Script here
+    	var canvas = document.getElementById('canvas1');
+		  var ctx = canvas.getContext('2d');
+
+
+
+      var drawTriangle = function (x1, y1, x2, y2, x3, y3) {
+          ctx.beginPath();
+          ctx.moveTo(75,50);
+          ctx.lineTo(100,95);
+          ctx.lineTo(100,145);
+
+          ctx.closePath();
+
+          ctx.fillStyle = "red";
+          ctx.strokeStyle = "blue";
+          ctx.stroke();
+      }
+
+      drawTriangle(74, 50, 100, 95, 100, 145);
+		
+    </script>
+  </body>
+ </html>
