@@ -7,25 +7,63 @@
     <script type="text/javascript">
     	'use strict';
     	// Script here
-    	var canvas = document.getElementById('canvas1');
+    	
+      
+      
+
+
+      var canvas = document.getElementById('canvas1');
 		  var ctx = canvas.getContext('2d');
+      var img = new Image();
+      img.src = 'https://avatanplus.com/files/resources/mid/596df1602647515d5576df9d.jpg';
 
+      
 
+      ctx.fillStyle = "rgb(223,128,255)";
+      ctx.fillRect (0, 0, 800, 600);
 
-      var drawTriangle = function (x1, y1, x2, y2, x3, y3) {
+      var drawTriangle = function (x1, y1, x2, y2, x3, y3, color) {
           ctx.beginPath();
-          ctx.moveTo(75,50);
-          ctx.lineTo(100,95);
-          ctx.lineTo(100,145);
+          ctx.moveTo(x1, y1);
+          ctx.lineTo(x2, y2);
+          ctx.lineTo(x3, y3);
+          ctx.fillStyle = color;
+          ctx.fill();
+      };
 
-          ctx.closePath();
+      var drawRhombus = function (x1, y1, x2, y2, x3, y3, x4, y4) {
 
-          ctx.fillStyle = "red";
-          ctx.strokeStyle = "blue";
-          ctx.stroke();
-      }
+          ctx.beginPath();
+          ctx.moveTo(400,0);
+          ctx.lineTo(0,300);
+          ctx.lineTo(400,600);
+          ctx.lineTo(200,300);
+          ctx.fillStyle = "rgb(255,230,230)";
+          ctx.fill();
+      };
 
-      drawTriangle(74, 50, 100, 95, 100, 145);
+      var drawOrangeTriangle = function() {
+        ctx.beginPath();
+        ctx.moveTo(100,200);
+        ctx.lineTo(700,150);
+        ctx.lineTo(700,250);
+        ctx.fillStyle = "rgb(255, 179, 127)";
+        ctx.fill();
+
+      };
+
+          /*ctx.closePath();
+          
+          ctx.strokeStyle = "yellow";
+          ctx.stroke();*/
+       
+
+      drawTriangle(200, 300, 800, 250, 800, 350, "rgb(255, 179, 255)");
+
+      //drawOrangeTriangle();
+
+      drawRhombus();
+      
 		
     </script>
   </body>
