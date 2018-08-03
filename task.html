@@ -1,0 +1,86 @@
+<html>
+  <head>
+    <meta charset="utf8">
+  </head>
+  <body>
+    <canvas id="canvas1" width="800" height="600" style="border: 1px solid pink;"></canvas>
+    <script type="text/javascript">
+      'use strict';
+      // Переделать функции drowTriangleUp И drowTriangleDown (или создать новые) таким обраозом, чтобы можно было нарисовать 
+      // треугольник с любым отступом от левого края
+      // например:
+
+      // drowTringleUp(0);
+      // drawTringleUp(30);
+      // drawTringleUp(60;
+      // drowTringleDown(15);
+      // drawTringleDown(45);
+      // drawTringleDown(75;
+
+      // Дополнительно: то же самое, только чтобы еще можно было задать отступ от верхнего края
+      // например:
+
+      // drowTriangleUp(0, 0);
+      // drowtriangleUp(30, 30);
+      // drowTringleDown(15, 0);
+      // drawTringleDown(45, 30);
+
+
+      var canvas    = document.getElementById('canvas1');
+      var ctx       = canvas.getContext('2d');
+
+      ctx.fillStyle = "rgba(202,225,225,0.5)";
+      ctx.fillRect (0, 0, 800, 600);  
+
+      ctx.fillStyle = "pink";
+      ctx.fillRect (0, 300, 800, 1);
+
+      function drowTriangle15x30x0 (x1, y1, x2, y2, x3, y3, color) {
+        ctx.beginPath();
+        ctx.moveTo      (x1, y1);
+        ctx.lineTo      (x2, y2);
+        ctx.lineTo      (x3, y3);
+        ctx.fillStyle = "pink";
+        ctx.fill();
+      }
+
+      function drowTriangle30x45x15 (x1, y1, x2, y2, x3, y3, color) {
+        ctx.beginPath();
+        ctx.moveTo      (x1, y1);
+        ctx.lineTo      (x2, y2);
+        ctx.lineTo      (x3, y3);
+        ctx.fillStyle =   "rgb(255, 240, 250)";
+        ctx.fill();
+      }
+
+      function drowTriangleLine (x1, y1, x2, y2, x3, y3, color) {
+        ctx.beginPath();
+        ctx.moveTo          (x1, y1);
+        ctx.lineTo          (x2, y2);
+        ctx.lineTo          (x3, y3); 
+        ctx.strokeStyle =    "white";
+        ctx.closePath();
+        ctx.stroke();
+      };
+
+
+      var drowTriangleUp = function (x1, x2, x3) { 
+        drowTriangle15x30x0 (x1, 0, x2, 25, x3, 25);
+      };
+
+      var drowTriangleDown = function (x1, x2, x3) {
+        drowTriangle30x45x15 (x1, 25, x2, 0, x3, 0);
+      };
+
+
+      drowTriangleUp(15, 30, 0); 
+      drowTriangleDown(30, 45, 15);
+      drowTriangleUp(15+30, 30+30, 0+30);
+      drowTriangleDown(30+30, 45+30, 15+30);
+      drowTriangleUp(15+60, 30+60, 0+60);
+      drowTriangleDown(30+60, 45+60, 15+60);
+
+
+    </script>
+  </body>
+ </html>
