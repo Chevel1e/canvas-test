@@ -3,7 +3,7 @@
     <meta charset="utf8">
   </head>
   <body>
-    <canvas id="canvas1" width="800" height="600" style="border: 1px solid black;"></canvas>
+    <canvas id="canvas1" width="800" height="600" style="border: 1px solid pink;"></canvas>
     <script type="text/javascript">
       'use strict';
       // Script here
@@ -21,7 +21,7 @@
           ctx.moveTo      (x1, y1);
           ctx.lineTo      (x2, y2);
           ctx.lineTo      (x3, y3);
-          ctx.fillStyle = "rgb(255, 240, 250)";
+          ctx.fillStyle = "pink";
           ctx.fill();
       }
 
@@ -30,8 +30,18 @@
           ctx.moveTo      (x1, y1);
           ctx.lineTo      (x2, y2);
           ctx.lineTo      (x3, y3);
-          ctx.fillStyle =  "pink";
+          ctx.fillStyle =   "rgb(255, 240, 250)";
           ctx.fill();
+      }
+
+      function drowTriangleLine (x1, y1, x2, y2, x3, y3, color) {
+      ctx.beginPath();
+      ctx.moveTo          (x1, y1);
+      ctx.lineTo          (x2, y2);
+      ctx.lineTo          (x3, y3); 
+      ctx.strokeStyle =    "white";
+      ctx.closePath();
+      ctx.stroke();
       }
 
 
@@ -43,6 +53,13 @@
         drowTriangle30x45x15 (x1, 25, x2, 0, x3, 0);
       };
 
+      var drowBigTriangle = function (x1, y1, x2, x3) {
+        drowTriangle15x30x0 (x1, y1, x2, 290, x3, 290)
+      };
+
+      var drowBigTriangleLine = function (x1, y1, x2, x3) {
+        drowTriangleLine (x1, y1, x2, 310, x3, 310)
+      }
 
 
       drowTriangleUp(15, 30, 0); 
@@ -51,39 +68,13 @@
       drowTriangleDown(30+30, 45+30, 15+30);
       drowTriangleUp(15+60, 30+60, 0+60);
       drowTriangleDown(30+60, 45+60, 15+60);
-      
-     
 
-      ctx.beginPath();
-      ctx.moveTo(400,150);
-      ctx.lineTo(500,290);
-      ctx.lineTo(300,290);
-      ctx.fill();      
-    
-      ctx.beginPath();
-      ctx.moveTo(100,200);
-      ctx.lineTo(150, 290);
-      ctx.lineTo(50, 290);
-      ctx.fill();
-
-      ctx.beginPath();
-      ctx.moveTo(700,200);
-      ctx.lineTo(650, 290);
-      ctx.lineTo(750, 290);
-      ctx.fill();
-
-      ctx.beginPath();
-      ctx.moveTo(400,450);
-      ctx.lineTo(500,310);
-      ctx.lineTo(300,310); 
-      ctx.strokeStyle = "pink";
-      ctx.closePath();
-      ctx.stroke();
-
-      
-
-
-
+      drowBigTriangle(400, 150, 500, 300);
+      drowBigTriangleLine(400, 450, 500, 300)
+      drowBigTriangle(100, 200, 150, 50);
+      drowBigTriangleLine(100, 400, 150, 50);
+      drowBigTriangle(700, 200, 650, 750);
+      drowBigTriangleLine(700, 400, 650, 750);
 
     </script>
   </body>
