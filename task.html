@@ -6,36 +6,32 @@
     <canvas id="canvas1" width="800" height="600" style="border: 1px solid pink;"></canvas>
     <script type="text/javascript">
       'use strict';
-      // Переделать функции drowTriangleUp И drowTriangleDown (или создать новые) таким обраозом, чтобы можно было нарисовать 
+
+      // Переделать функции drawTriangleUp И drawTriangleDown (или создать новые) таким обраозом, чтобы можно было нарисовать 
       // треугольник с любым отступом от левого края
       // например:
-
-      // drowTringleUp(0);
+      // drawTringleUp(0);
       // drawTringleUp(30);
       // drawTringleUp(60;
-      // drowTringleDown(15);
+      // drawTringleDown(15);
       // drawTringleDown(45);
       // drawTringleDown(75;
-
       // Дополнительно: то же самое, только чтобы еще можно было задать отступ от верхнего края
       // например:
-
-      // drowTriangleUp(0, 0);
-      // drowtriangleUp(30, 30);
-      // drowTringleDown(15, 0);
+      // drawTriangleUp(0, 0);
+      // drawtriangleUp(30, 30);
+      // drawTringleDown(15, 0);
       // drawTringleDown(45, 30);
-
-
+      
       var canvas    = document.getElementById('canvas1');
       var ctx       = canvas.getContext('2d');
-
+      
       ctx.fillStyle = "rgba(202,225,225,0.5)";
       ctx.fillRect (0, 0, 800, 600);  
-
       ctx.fillStyle = "pink";
       ctx.fillRect (0, 300, 800, 1);
-
-      function drowTriangle15x30x0 (x1, y1, x2, y2, x3, y3, color) {
+     
+      function drawTriangle15x30x0 (x1, y1, x2, y2, x3, y3, color) {
         ctx.beginPath();
         ctx.moveTo      (x1, y1);
         ctx.lineTo      (x2, y2);
@@ -44,7 +40,7 @@
         ctx.fill();
       }
 
-      function drowTriangle30x45x15 (x1, y1, x2, y2, x3, y3, color) {
+      function drawTriangle30x45x15 (x1, y1, x2, y2, x3, y3, color) {
         ctx.beginPath();
         ctx.moveTo      (x1, y1);
         ctx.lineTo      (x2, y2);
@@ -53,7 +49,7 @@
         ctx.fill();
       }
 
-      function drowTriangleLine (x1, y1, x2, y2, x3, y3, color) {
+      /*function drawTriangleLine (x1, y1, x2, y2, x3, y3, color) {
         ctx.beginPath();
         ctx.moveTo          (x1, y1);
         ctx.lineTo          (x2, y2);
@@ -61,25 +57,102 @@
         ctx.strokeStyle =    "white";
         ctx.closePath();
         ctx.stroke();
+      };*/
+
+      var drawTriangleUp = function (x1) { 
+        drawTriangle15x30x0 (x1, 30, 15+x1, 0, 30+x1, 30);
+      };
+      var drawTriangleDown = function (x1) {
+        drawTriangle30x45x15 (x1, 0, 15+x1, 30, 30+x1, 0);
+      };
+      
+      drawTriangleDown(-15);
+      drawTriangleUp(0);
+      drawTriangleDown(15);
+      drawTriangleUp(30);
+      drawTriangleDown(45);
+      drawTriangleUp(60);
+      drawTriangleDown(75);
+      drawTriangleUp(90);
+      drawTriangleDown(105);
+      drawTriangleUp(120);
+      drawTriangleDown(135);
+      drawTriangleUp(150);
+      drawTriangleDown(165);
+      drawTriangleUp(180);
+      drawTriangleDown(195);
+      drawTriangleUp(210);
+      drawTriangleDown(225);
+      drawTriangleUp(240);
+      drawTriangleDown(255);
+      drawTriangleUp(270);
+      drawTriangleDown(285);
+      drawTriangleUp(300);
+      drawTriangleDown(315);
+      drawTriangleUp(330);
+      drawTriangleDown(345);
+      drawTriangleUp(360);
+      drawTriangleDown(375);
+      drawTriangleUp(390);
+      drawTriangleDown(405);
+      drawTriangleUp(420);
+      drawTriangleDown(435);
+      drawTriangleUp(450);
+      drawTriangleDown(465);
+      drawTriangleUp(480);
+      drawTriangleDown(495);
+      drawTriangleUp(510);
+      drawTriangleDown(525);
+      drawTriangleUp(540);
+      drawTriangleDown(555);
+      drawTriangleUp(570);
+      drawTriangleDown(585);
+      drawTriangleUp(600);
+      drawTriangleDown(615);
+      drawTriangleUp(630);
+      drawTriangleDown(645);
+      drawTriangleUp(660);
+      drawTriangleDown(675);
+      drawTriangleUp(690);
+      drawTriangleDown(705);
+      drawTriangleUp(720);
+      drawTriangleDown(735);
+      drawTriangleUp(750);
+      drawTriangleDown(765);
+      drawTriangleUp(780);
+      drawTriangleDown(795);
+      
+      
+   
+
+      var drawTriangleUp2 = function (x1) { 
+        drawTriangle15x30x0 (x1, 30+x1, 15+x1, 0+x1, 30+x1, 30+x1);
       };
 
+      drawTriangleUp2(240);
+      drawTriangleUp2(270);
+      drawTriangleUp2(300);
+      drawTriangleUp2(330);
+      drawTriangleUp2(360);
 
-      var drowTriangleUp = function (x1, x2, x3) { 
-        drowTriangle15x30x0 (x1, 0, x2, 25, x3, 25);
-      };
+      var drawTriangleDown2 = function (x1) {
+        drawTriangle30x45x15(x1, 720 - x1, 30 + x1, 720 - x1, 15 + x1, 750 - x1);
+      }; 
 
-      var drowTriangleDown = function (x1, x2, x3) {
-        drowTriangle30x45x15 (x1, 25, x2, 0, x3, 0);
-      };
+      drawTriangleDown2(390);
+      drawTriangleDown2(420);
+      drawTriangleDown2(450);
+      drawTriangleDown2(480);
 
 
-      drowTriangleUp(15, 30, 0); 
-      drowTriangleDown(30, 45, 15);
-      drowTriangleUp(15+30, 30+30, 0+30);
-      drowTriangleDown(30+30, 45+30, 15+30);
-      drowTriangleUp(15+60, 30+60, 0+60);
-      drowTriangleDown(30+60, 45+60, 15+60);
 
+      /* 
+      drawTriangleDown(15, 30, 45);
+      drawTriangleUp(30, 45, 60);
+      drawTriangleDown(45, 60, 75);
+      drawTriangleUp(60, 75, 90);
+      drawTriangleDown(75, 90, 105); 
+*/
 
     </script>
   </body>
