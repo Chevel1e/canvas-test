@@ -68,14 +68,17 @@
         drowTriangle15x30x0 (x1, 0, x2, 25, x3, 25);
       };
 
-       
+      var drowTriangleDown = function (x1, x2, x3) {
+        drowTriangle30x45x15 (x1, 25, x2, 0, x3, 0);
+      };
 
-      drowTrngUp(0); 
-      drowTrngUp(30);
-      drowTrngUp(60);
-      drowTrngDown(30, 45, 15);
-      drowTrngDown(30+30, 45+30, 15+30);
-      drowTrngDown(30+60, 45+60, 15+60);
+
+      drowTriangleUp(15, 30, 0); 
+      drowTriangleDown(30, 45, 15);
+      drowTriangleUp(15+30, 30+30, 0+30);
+      drowTriangleDown(30+30, 45+30, 15+30);
+      drowTriangleUp(15+60, 30+60, 0+60);
+      drowTriangleDown(30+60, 45+60, 15+60);
 
 
     </script>
