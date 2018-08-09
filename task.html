@@ -49,83 +49,83 @@
         ctx.fill();
       }
 
-      /*function drawTriangleLine (x1, y1, x2, y2, x3, y3, color) {
+      function drawTriangleLine (x1, y1, x2, y2, x3, y3, color) {
         ctx.beginPath();
         ctx.moveTo          (x1, y1);
         ctx.lineTo          (x2, y2);
         ctx.lineTo          (x3, y3); 
-        ctx.strokeStyle =    "white";
+        ctx.strokeStyle =   "white";
         ctx.closePath();
         ctx.stroke();
-      };*/
+      }
 
-      var drawTriangleUp = function (x1) { 
+      var drawTriangleUp   = function (x1) { 
         drawTriangle15x30x0 (x1, 30, 15+x1, 0, 30+x1, 30);
       };
       var drawTriangleDown = function (x1) {
         drawTriangle30x45x15 (x1, 0, 15+x1, 30, 30+x1, 0);
       };
       
-      drawTriangleDown(-15);
-      drawTriangleUp(0);
-      drawTriangleDown(15);
-      drawTriangleUp(30);
-      drawTriangleDown(45);
-      drawTriangleUp(60);
-      drawTriangleDown(75);
-      drawTriangleUp(90);
-      drawTriangleDown(105);
-      drawTriangleUp(120);
-      drawTriangleDown(135);
-      drawTriangleUp(150);
-      drawTriangleDown(165);
-      drawTriangleUp(180);
-      drawTriangleDown(195);
-      drawTriangleUp(210);
-      drawTriangleDown(225);
-      drawTriangleUp(240);
-      drawTriangleDown(255);
-      drawTriangleUp(270);
-      drawTriangleDown(285);
-      drawTriangleUp(300);
-      drawTriangleDown(315);
-      drawTriangleUp(330);
-      drawTriangleDown(345);
-      drawTriangleUp(360);
-      drawTriangleDown(375);
-      drawTriangleUp(390);
-      drawTriangleDown(405);
-      drawTriangleUp(420);
-      drawTriangleDown(435);
-      drawTriangleUp(450);
-      drawTriangleDown(465);
-      drawTriangleUp(480);
-      drawTriangleDown(495);
-      drawTriangleUp(510);
-      drawTriangleDown(525);
-      drawTriangleUp(540);
-      drawTriangleDown(555);
-      drawTriangleUp(570);
-      drawTriangleDown(585);
-      drawTriangleUp(600);
-      drawTriangleDown(615);
-      drawTriangleUp(630);
-      drawTriangleDown(645);
-      drawTriangleUp(660);
-      drawTriangleDown(675);
-      drawTriangleUp(690);
-      drawTriangleDown(705);
-      drawTriangleUp(720);
-      drawTriangleDown(735);
-      drawTriangleUp(750);
-      drawTriangleDown(765);
-      drawTriangleUp(780);
-      drawTriangleDown(795);
+      drawTriangleDown    (-15);
+      drawTriangleUp      (0);
+      drawTriangleDown    (15);
+      drawTriangleUp      (30);
+      drawTriangleDown    (45);
+      drawTriangleUp      (60);
+      drawTriangleDown    (75);
+      drawTriangleUp      (90);
+      drawTriangleDown    (105);
+      drawTriangleUp      (120);
+      drawTriangleDown    (135);
+      drawTriangleUp      (150);
+      drawTriangleDown    (165);
+      drawTriangleUp      (180);
+      drawTriangleDown    (195);
+      drawTriangleUp      (210);
+      drawTriangleDown    (225);
+      drawTriangleUp      (240);
+      drawTriangleDown    (255);
+      drawTriangleUp      (270);
+      drawTriangleDown    (285);
+      drawTriangleUp      (300);
+      drawTriangleDown    (315);
+      drawTriangleUp      (330);
+      drawTriangleDown    (345);
+      drawTriangleUp      (360);
+      drawTriangleDown    (375);
+      drawTriangleUp      (390);
+      drawTriangleDown    (405);
+      drawTriangleUp      (420);
+      drawTriangleDown    (435);
+      drawTriangleUp      (450);
+      drawTriangleDown    (465);
+      drawTriangleUp      (480);
+      drawTriangleDown    (495);
+      drawTriangleUp      (510);
+      drawTriangleDown    (525);
+      drawTriangleUp      (540);
+      drawTriangleDown    (555);
+      drawTriangleUp      (570);
+      drawTriangleDown    (585);
+      drawTriangleUp      (600);
+      drawTriangleDown    (615);
+      drawTriangleUp      (630);
+      drawTriangleDown    (645);
+      drawTriangleUp      (660);
+      drawTriangleDown    (675);
+      drawTriangleUp      (690);
+      drawTriangleDown    (705);
+      drawTriangleUp      (720);
+      drawTriangleDown    (735);
+      drawTriangleUp      (750);
+      drawTriangleDown    (765);
+      drawTriangleUp      (780);
+      drawTriangleDown    (795);
       
       
    
 
-      var drawTriangleUp2 = function (x1) { 
+      var drawTriangleUp2    = function (x1) { 
         drawTriangle15x30x0 (x1, 30+x1, 15+x1, 0+x1, 30+x1, 30+x1);
       };
 
@@ -135,7 +135,7 @@
       drawTriangleUp2(330);
       drawTriangleUp2(360);
 
-      var drawTriangleDown2 = function (x1) {
+      var drawTriangleDown2   = function (x1) {
         drawTriangle30x45x15(x1, 720 - x1, 30 + x1, 720 - x1, 15 + x1, 750 - x1);
       }; 
 
@@ -144,15 +144,23 @@
       drawTriangleDown2(450);
       drawTriangleDown2(480);
 
+     var drawTriangleUp3     = function (x1, y1) {
+      drawTriangle15x30x0 (x1, y1, 40+x1, y1-80, x1+80, y1);
+     }
 
+     var drawBigTriangleLine = function (x1, y1, x2, y2, x3, y3) {
+      drawTriangleLine (x1, y1, x2, y2, x3, y3);
+     }
 
-      /* 
-      drawTriangleDown(15, 30, 45);
-      drawTriangleUp(30, 45, 60);
-      drawTriangleDown(45, 60, 75);
-      drawTriangleUp(60, 75, 90);
-      drawTriangleDown(75, 90, 105); 
-*/
+     drawTriangleUp3     (180, 390);
+     drawTriangleUp3     (490, 390);
+     drawTriangleUp3     (335, 130);
+
+     drawBigTriangleLine (145, 405, 375, 15, 615, 405);
+     drawBigTriangleLine (375, 600, 800, 0, 0, 0);
+     drawBigTriangleLine (375, -20, 800, 600, 0, 600)
+     drawBigTriangleLine (375, 680, 880, -80, -80, -80);
+     drawBigTriangleLine (375, -80, 880, 680, -80, 680);
 
     </script>
   </body>
