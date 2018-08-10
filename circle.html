@@ -1,0 +1,64 @@
+<html>
+  <head>
+  	<meta charset="utf8">
+  </head>
+  <body>
+    <canvas id="canvas1" width="800" height="600" style="border: 1px solid black;"></canvas>
+    <script type="text/javascript">
+    	'use strict';
+    	// Script here
+    	
+      var canvas = document.getElementById('canvas1');
+		  var ctx = canvas.getContext('2d');
+
+ 
+    ctx.beginPath();
+    ctx.arc(300,400,200,0,Math.PI*2,true); // Внешняя окружность (x, y центра круга, r, сколько раз длину окружности увеличить на r, пи (1/2 окружности*2), зачем true?)
+    
+
+    ctx.moveTo   (450,400); // x, y начала линии
+    ctx.arc      (300,400,150,0,Math.PI,false);  // (x, y центра круга, r, угол начала дуги, угол конца, mathPI = 1/2 длины)
+    ctx.moveTo   (240,300); // (x, y начала линии)
+    ctx.arc      (200,300,40,0,Math.PI*2,true);  // Левый глаз
+    ctx.moveTo   (440,300); // (x, y начала линии)
+    ctx.arc      (400,300,40,0,Math.PI*2,true);  // Правый глаз
+    ctx.lineWidth   =  10;
+    ctx.fillStyle   =  "rgb(250, 128, 114)";
+    ctx.strokeStyle =  "white";
+    ctx.fill();
+    ctx.stroke();
+
+    ctx.beginPath();
+    ctx.arc      (550,100,50,0,Math.PI,true);
+    ctx.arc      (650,100,50,0,Math.PI,true);
+    ctx.moveTo   (500, 100);
+    ctx.lineTo   (600, 200);
+    ctx.lineTo   (700, 100);   
+    ctx.fill()
+    ctx.stroke();
+
+
+  
+
+
+
+
+
+
+
+
+
+
+    /*ctx.beginPath();
+    ctx.arc(300,400,200,0,Math.PI*2,true); // Внешняя окружность
+    ctx.moveTo(110,75);
+    ctx.arc(75,75,35,0,Math.PI,false);  // рот (по часовой стрелке)
+    ctx.moveTo(65,65);
+    ctx.arc(60,65,5,0,Math.PI*2,true);  // Левый глаз
+    ctx.moveTo(95,65);
+    ctx.arc(90,65,5,0,Math.PI*2,true);  // Правый глаз
+    ctx.stroke();*/
+		
+    </script>
+  </body>
+ </html>
