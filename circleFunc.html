@@ -1,0 +1,58 @@
+<html>
+  <head>
+  	<meta charset="utf8">
+  </head>
+  <body>
+    <canvas id="canvas1" width="800" height="600" style="border: 1px solid black;"></canvas>
+    <script type="text/javascript">
+    	'use strict';
+    	// Script here
+    	
+      var canvas = document.getElementById('canvas1');
+	  var ctx = canvas.getContext('2d');
+      var alphaPink = "rgba(255,105,180,0.5)"
+
+      ctx.fillStyle = "rgba(135, 206, 255, 0.5)";
+      ctx.fillRect (0, 0, 800, 600);  
+
+
+      function drowCircle (x2, y2, r, a, p, color) { 
+        ctx.beginPath();
+        ctx.fillStyle   =  color;
+        ctx.filter = "blur(3px)";
+        ctx.arc(x2, y2, r, a, p);
+        ctx.fill(); 
+      }
+
+ 
+    var drowCircle1 = function (x2, y2, r, color) {  
+        drowCircle (x2, y2, r, 0, Math.PI*2, color);
+    }
+
+     ctx.font = "100px serif";
+     ctx.fillStyle   =  alphaPink;
+     ctx.fillText("Bubble", 200, 200);
+   
+    drowCircle1 (-100, -100, 200, alphaPink)
+    drowCircle1 (150, 400, 150, alphaPink)
+    drowCircle1 (400, 550, 75, alphaPink)
+    drowCircle1 (350, 400, 100, alphaPink)
+    drowCircle1 (800, 400, 100, alphaPink)
+    drowCircle1 (600, 0, 100, alphaPink)
+    drowCircle1 (700, 100, 100, alphaPink)
+    drowCircle1 (100, 350, 20, "white")
+    drowCircle1 (60, 300, 30, "white")
+
+
+   
+
+  
+		
+    </script>
+  </body>
+ </html>
+
+
+
+
+      
