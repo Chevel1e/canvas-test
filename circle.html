@@ -18,9 +18,9 @@
 
     ctx.moveTo   (450,400); // x, y начала линии
     ctx.arc      (300,400,150,0,Math.PI,false);  // (x, y центра круга, r, угол начала дуги, угол конца, mathPI = 1/2 длины)
-    ctx.moveTo   (240,300); // (x, y начала линии)
+    ctx.moveTo   (240,300); // x, y начала линии 
     ctx.arc      (200,300,40,0,Math.PI*2,true);  // Левый глаз
-    ctx.moveTo   (440,300); // (x, y начала линии)
+    ctx.moveTo   (440,300); // x, y начала линии 
     ctx.arc      (400,300,40,0,Math.PI*2,true);  // Правый глаз
     ctx.lineWidth   =  10;
     ctx.fillStyle   =  "rgb(250, 128, 114)";
@@ -29,7 +29,7 @@
     ctx.stroke();
 
     ctx.beginPath();
-    ctx.arc      (550,100,50,0,Math.PI,true);
+    ctx.arc      (550,100,50,0,Math.PI,true); // <З
     ctx.arc      (650,100,50,0,Math.PI,true);
     ctx.moveTo   (500, 100);
     ctx.lineTo   (600, 200);
