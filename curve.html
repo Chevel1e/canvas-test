@@ -34,9 +34,9 @@
       ctx.fill();    // круг бол.
 
       var drowCircle = function () {
-      ctx.beginPath();
-      ctx.arc(400,320,120,0,Math.PI*2,true);
-      ctx.fill(); 
+        ctx.beginPath();
+        ctx.arc(400,320,120,0,Math.PI*2,true);
+        ctx.fill(); 
       }   
       drowCircle () // круг рамка
 
@@ -46,7 +46,26 @@
       ctx.fillStyle   =  "rgb(255, 215, 0)";
       ctx.fill();  // круг мал.
 
-    
+  /*
+      function drawPetal(centerX, centerY, offset, length, width, phi, color) {
+         // centerX, centerY - координаты центра цветка
+         // offset - расстояние от центра цветка до лепестка
+         // length - длинна лепестка
+         // width  - ширина лепестка, в самой широкой его части
+         // phi    - угол наклона лепестка
+         // color  - ???? профит
+
+
+         // получаем координаты точки, ближайшей к центру
+         var x1 = centerX + Math.sin(phi * Math.PI / 180) * offset;
+         var y1 = centerY + Math.cos(phi * Math.PI / 180) * offset;
+         console.log(x1, y1);
+      }
+
+      drawPetal(400, 320, 20, 100, 30, 45, "white");
+*/
+
+
       ctx.beginPath();
       ctx.moveTo(400,300);
       ctx.quadraticCurveTo(370,250,400,200);
@@ -97,11 +116,6 @@
       ctx.moveTo(385,335);
       ctx.quadraticCurveTo(370,390,310,400);
       ctx.fill();
-
-      
-
-  
-
 
   
     </script>
