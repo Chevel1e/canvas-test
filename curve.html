@@ -1,0 +1,109 @@
+<html>
+  <head>
+    <meta charset="utf8">
+  </head>
+  <body>
+    <canvas id="canvas1" width="800" height="600" style="border: 2px white;"></canvas>
+    <script type="text/javascript">
+      'use strict';
+      // Script here
+      
+      var canvas = document.getElementById('canvas1');
+      var ctx = canvas.getContext('2d');
+
+      ctx.fillStyle = "rgba(100, 149, 237,0.5)"; // фон
+      ctx.fillRect (0, 0, 800, 600);
+
+      ctx.beginPath();
+      ctx.moveTo(700,500);                                    // как записать в один блок? 
+      ctx.bezierCurveTo(710,490,730,490,728,510);
+      ctx.bezierCurveTo(725,525,710,530,700,540); 
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(700,500);
+      ctx.bezierCurveTo(690,490,670,490,672,510);
+      ctx.bezierCurveTo(675,525,690,530,700,540);
+      ctx.fill(); //
+
+
+
+
+      ctx.beginPath();
+      ctx.arc(400,320,250,0,Math.PI*2,true);
+      ctx.fill();    // круг бол.
+
+      var drowCircle = function () {
+      ctx.beginPath();
+      ctx.arc(400,320,120,0,Math.PI*2,true);
+      ctx.fill(); 
+      }   
+      drowCircle () // круг рамка
+
+
+      ctx.beginPath();
+      ctx.arc(400,320,15,0,Math.PI*2,true);
+      ctx.fillStyle   =  "rgb(255, 215, 0)";
+      ctx.fill();  // круг мал.
+
+    
+      ctx.beginPath();
+      ctx.moveTo(400,300);
+      ctx.quadraticCurveTo(370,250,400,200);
+      ctx.fillStyle   =  "white";
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(400,300);
+      ctx.quadraticCurveTo(430,250,400,200);
+      ctx.fill();
+
+
+      ctx.beginPath();
+      ctx.moveTo(400,340);
+      ctx.quadraticCurveTo(370,390,400,440);
+      ctx.fillStyle   =  "white";
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(400,340);
+      ctx.quadraticCurveTo(430,390,400,440);
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(380,320);
+      ctx.quadraticCurveTo(350,290,280,320);
+      ctx.fillStyle   =  "white";
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(380,320);
+      ctx.quadraticCurveTo(350,350,280,320);
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(420,320);
+      ctx.quadraticCurveTo(470,290,520,320);
+      ctx.fillStyle   =  "white";
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(420,320);
+      ctx.quadraticCurveTo(470,350,520,320);
+      ctx.fill();
+
+      ctx.beginPath();
+      ctx.moveTo(385,335);
+      ctx.quadraticCurveTo(315,350,310,400); // как вычислить координаты точек на окружности? ^^ (r=120)
+      ctx.fillStyle   =  "white";
+      ctx.fill();
+      ctx.beginPath();
+      ctx.moveTo(385,335);
+      ctx.quadraticCurveTo(370,390,310,400);
+      ctx.fill();
+
+      
+
+  
+
+
+  
+    </script>
+  </body>
+ </html>
