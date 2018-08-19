@@ -71,12 +71,13 @@
 
 
          // получаем координаты точки, ближайшей к центру
-         var x1 = centerX + Math.sin(phi * Math.PI / 180) * offset;
-         var y1 = centerY + Math.cos(phi * Math.PI / 180) * offset;
+         var x1 = centerX + Math.cos(phi * Math.PI / 180) * offset;
+         var y1 = centerY + Math.sin(phi * Math.PI / 180) * offset;
          console.log(x1, y1);
 
-         var x2 = centerX + Math.sin(phi * Math.PI / 180) * offset;
-         var y2 = centerY + Math.cos(phi * Math.PI / 180) * offset;
+         // получаем координаты самой дальней от центра точки
+         var x2 = centerX + Math.cos(phi * Math.PI / 180) * (offset + length);
+         var y2 = centerY + Math.sin(phi * Math.PI / 180) * (offset + length);
          console.log(x1, y1);
 
 
