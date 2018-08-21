@@ -3,37 +3,115 @@
   	<meta charset="utf8">
   </head>
   <body>
-    <canvas id="canvas1" width="800" height="600" style="border: 1px solid black;"></canvas>
+    <canvas id="canvas1" width="800" height="600" style="border: 15px solid pink;"></canvas>
     <script type="text/javascript">
     	'use strict';
     	// Script here
     	var canvas = document.getElementById('canvas1');
 		  var ctx = canvas.getContext('2d');
 
-      var centerX = 400
-      var centerY = 320
+      ctx.fillStyle = "black"; // фон
+      ctx.fillRect (0, 0, 800, 600);
+      
       var offset = 20
-      var phi = 45
+      var length = 100
 
-      var x1 = centerX + Math.sin(phi * Math.PI / 180) * offset;
-      var y1 = centerY + Math.cos(phi * Math.PI / 180) * offset;
-      console.log(x1, y1);
+      function drawPetal(phi, centerX, centerY) {
 
-      /*function drawPetal (centerX, centerY, offset, length, width, phi, color) {
-      ctx.beginPath();
-      ctx.moveTo(400,300);
-      ctx.quadraticCurveTo(370,250,400,200);
-      ctx.fillStyle   =  "white";
-      ctx.fill();
-      ctx.beginPath();
-      ctx.moveTo(400,300);
-      ctx.quadraticCurveTo(430,250,400,200);
-      ctx.fill();
-      }*/
+         // получаем координаты точки, ближайшей к центру
+         var x1 = centerX + Math.cos(phi * Math.PI / 180) * offset;
+         var y1 = centerY + Math.sin(phi * Math.PI / 180) * offset;
+         console.log(x1, y1);
 
-      //drawPetal(400, 320, 20, 100, 30, 45, "blue")
+         // получаем координаты самой дальней от центра точки
+         var x2 = centerX + Math.cos(phi * Math.PI / 180) * (offset + length);
+         var y2 = centerY + Math.sin(phi * Math.PI / 180) * (offset + length);
+         console.log(x2, y2);
 
-		
+         var x3 = centerX + Math.cos((phi+20) * Math.PI / 180) * (length/2);
+         var y3 = centerY + Math.sin((phi+20) * Math.PI / 180) * (length/2);
+         console.log(x3, y3);
+
+         var x4 = centerX + Math.cos((phi-20) * Math.PI / 180) * (length/2);
+         var y4 = centerY + Math.sin((phi-20) * Math.PI / 180) * (length/2);
+         console.log(x4, y4);
+
+        
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.quadraticCurveTo(x3, y3, x2, y2);
+          ctx.fillStyle   =  "pink";
+          ctx.moveTo(x2,y2);
+          ctx.quadraticCurveTo(x4,y4,x1,y1);
+          ctx.fill();
+         } 
+
+         drawPetal (45, 400, 320);
+         drawPetal (55, 400, 320);
+         drawPetal (75, 400, 320);
+         drawPetal (85, 400, 320);
+         drawPetal (105, 400, 320);
+         drawPetal (115, 400, 320);
+         drawPetal (135, 400, 320);
+         drawPetal (145, 400, 320);
+         drawPetal (165, 400, 320);
+         drawPetal (175, 400, 320);
+         drawPetal (195, 400, 320);
+         drawPetal (205, 400, 320);
+         drawPetal (225, 400, 320);
+         drawPetal (235, 400, 320);
+         drawPetal (255, 400, 320);
+         drawPetal (265, 400, 320);
+         drawPetal (285, 400, 320);
+         drawPetal (295, 400, 320);
+         drawPetal (315, 400, 320);
+         drawPetal (325, 400, 320);
+         drawPetal (345, 400, 320);
+         drawPetal (355, 400, 320);
+         drawPetal (375, 400, 320);
+         drawPetal (385, 400, 320);
+
+         /*drawPetal (45, 200, 40);
+         drawPetal (55, 200, 40);
+         drawPetal (75, 200, 40);
+         drawPetal (85, 200, 40);
+         drawPetal (105, 200, 40);
+         drawPetal (115, 200, 40);
+         drawPetal (135, 200, 40);
+         drawPetal (145, 200, 40);
+         drawPetal (165, 200, 40);
+         drawPetal (175, 200, 40);
+         drawPetal (195, 200, 40);
+         drawPetal (205, 200, 40);
+         drawPetal (225, 200, 40);
+         drawPetal (235, 200, 40);
+         drawPetal (255, 200, 40);
+         drawPetal (265, 200, 40);
+         drawPetal (285, 200, 40);
+         drawPetal (295, 200, 40);
+         drawPetal (315, 200, 40);
+         drawPetal (325, 200, 40);
+         drawPetal (345, 200, 40);
+         drawPetal (355, 200, 40);
+         drawPetal (375, 200, 40);
+         drawPetal (385, 200, 40);*/
+
+    ctx.beginPath();
+    ctx.arc(400,320,15,0,Math.PI*2);
+    ctx.fill()
+
+		ctx.lineWidth = 4; 
+    ctx.beginPath(); 
+    ctx.moveTo(395, 420); 
+    ctx.bezierCurveTo(420, 520, 410, 540, 400, 580); 
+    ctx.strokeStyle = "pink"
+    ctx.stroke(); 
+
+    drawPetal (315, 400, 520);
+    drawPetal (225, 420, 540);
+
+
+
     </script>
   </body>
  </html>
