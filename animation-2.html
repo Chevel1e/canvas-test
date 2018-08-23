@@ -1,0 +1,88 @@
+<html>
+  <head>
+  	<meta charset="utf8">
+  </head>
+  <body>
+    <canvas id="canvas1" width="800" height="600" style="border: 1px solid black;"></canvas>
+    <script type="text/javascript">
+    	'use strict';
+    	// Script here
+    	var canvas = document.getElementById('canvas1');
+		  var ctx = canvas.getContext('2d');
+
+      ctx.fillStyle = "rgb(230 230 250)"; // фон
+      ctx.fillRect (0, 0, 800, 600);
+
+      
+      var offset = 20
+      var length = 100
+
+      var phi = 0
+
+      function drawCircle(centerX, centerY, color) {
+
+        ctx.beginPath();
+        ctx.arc(centerX,centerY,10,0,Math.PI*2);
+        ctx.fillStyle = color
+        ctx.fill()
+      }
+
+
+      function drawPetal(color, centerX, centerY) {
+
+         // получаем координаты точки, ближайшей к центру
+         var x1 = centerX + Math.cos(phi * Math.PI / 180) * offset;
+         var y1 = centerY + Math.sin(phi * Math.PI / 180) * offset;
+         console.log(x1, y1);
+
+         // получаем координаты самой дальней от центра точки
+         var x2 = centerX + Math.cos(phi * Math.PI / 180) * (offset + length);
+         var y2 = centerY + Math.sin(phi * Math.PI / 180) * (offset + length);
+         console.log(x2, y2);
+
+         var x3 = centerX + Math.cos((phi+20) * Math.PI / 180) * (length/2);
+         var y3 = centerY + Math.sin((phi+20) * Math.PI / 180) * (length/2);
+         console.log(x3, y3);
+
+         var x4 = centerX + Math.cos((phi-20) * Math.PI / 180) * (length/2);
+         var y4 = centerY + Math.sin((phi-20) * Math.PI / 180) * (length/2);
+         console.log(x4, y4);
+
+        
+          ctx.beginPath();
+          ctx.moveTo(x1, y1);
+          ctx.quadraticCurveTo(x3, y3, x2, y2);
+          ctx.fillStyle   =  color;
+          ctx.moveTo(x2,y2);
+          ctx.quadraticCurveTo(x4,y4,x1,y1);
+          ctx.fill();
+     } 
+
+          var draw = function() {
+
+            drawPetal("pink", 400, 300);
+            drawCircle(400, 300, "pink")
+
+            phi += 20;
+
+          if (phi > 340) {drawPetal("darkPink", 200, 200), drawCircle (200, 200, "pink"), drawPetal("darkPink", 600, 200), drawCircle (600, 200, "pink")
+        }}
+
+          setInterval(draw, 100);
+
+          
+
+          // ctx.save(); , ctx.restore(); - wtf ? 
+
+
+
+
+
+
+
+        
+
+		
+    </script>
+  </body>
+ </html>

@@ -1,0 +1,30 @@
+<html>
+<head>
+  <style>
+    #train {
+      position: relative;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <img id="train" src="https://orig12.deviantart.net/94ff/f/2015/281/d/e/rick_render_by_oldandnewshowsforevs-d9cf59s.png">
+  <script>
+    
+    train.onclick = function() {
+      
+    var start = Date.now(); // сохранить время начала
+     
+      var timer = setInterval (function() {  // вычислить сколько времени прошло из opts.duration
+      var timePassed = Date.now() - start;
+      train.style.left = timePassed / 2 + 'px';
+        if (timePassed > 3800) clearInterval(timer);
+      }, 7);
+
+    }
+  
+
+
+  </script>
+</body>
+</html>

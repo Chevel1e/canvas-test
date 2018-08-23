@@ -22,7 +22,7 @@
         ctx.fillRect(x, y, x + 20, y + 20);
       }
 
-      var i = 0;
+      var i = 1;
 
       var draw = function() {
         //erase20x20(0 + i, 100);
@@ -34,6 +34,7 @@
       };
 
       setInterval(draw, 100);
+      ctx.restore(100);
 
 
     </script>
