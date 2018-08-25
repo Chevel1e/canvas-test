@@ -1,0 +1,81 @@
+<html>
+  <head>
+    <meta charset="utf8">
+  </head>
+  <body>
+    <canvas id="canvas1" width="800" height="600" style="border: 1px solid black;"></canvas>
+    <script type="text/javascript">
+      'use strict';
+      // Script here
+      var canvas = document.getElementById('canvas1');
+      var ctx = canvas.getContext('2d');
+
+      // =================  FUNCTIONS  ================= //
+
+      /* 
+       * Возвращает случайное число между min и max
+      */
+      var random = function(min, max) {
+        return Math.round(Math.random() * (max - min)) + min;
+      };
+
+      /* 
+       * Рисует круг с координатами центра x и y, радиусом r и цветом color
+      */
+      var drawCircle = function(x, y, r, color) {
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, 2 * Math.PI);
+        ctx.fill();
+      };
+
+      /* 
+       * Стирает (закрашивает белым) прямоугольник с координатами x и y, шириной width, и высотой height
+      */
+      var erase = function(x, y, width, height) {
+        ctx.fillStyle = 'white';
+        ctx.fillRect(x, y, width, height);
+      };
+      // ===============  FUNCTIONS END  =============== //
+
+
+      // ================  CODE BEGINS  ================ //
+
+      const ballR  = 10;                       // Радиус шарика
+
+      var ballX    = random(0, canvas.width);  // Координаты шарика. Начальное значение выбирается рандомно.
+      var ballY    = random(0, canvas.height);
+
+      var ballXVel = 3;                        // Скорость шарика по X и по Y
+      var ballYVel = 2;
+
+      var animate = function() {               // Прорисовка кадра
+
+        // Сперва, стираем шарик.
+        erase(ballX - ballR, ballY - ballR, ballR * 2, ballR * 2);      
+
+        // Прежде чем вычислять координаты, проверям столкновение со стенками.
+        // При чём, тут учитывается не текущее положение шарика, а положение которое будет в следующем кадре, если скорость не поменяется.
+        // Если при такой скорости шарик окажется в стене в следующем кадре, то нужно этого не допустить!
+        // Скорость по соответствующей координате будет поменяна на противоположную.
+        if ((ballX + ballXVel < ballR) || (ballX + ballXVel > canvas.width - ballR)) {
+          ballXVel = -ballXVel;
+        }
+
+        if ((ballY + ballYVel < ballR) || (ballY + ballYVel > canvas.height - ballR)) {
+          ballYVel = -ballYVel;
+        }
+
+        // Вычисляется новое положение шарика
+        ballX = ballX + ballXVel;
+        ballY = ballY + ballYVel;
+
+        // Рисуем шарик
+        drawCircle(ballX, ballY, ballR, 'rgb(128, 128, 255)');
+      };
+
+      // Повторяем 66 раз в секунду
+      setInterval(animate, 15);
+    </script>
+  </body>
+ </html>

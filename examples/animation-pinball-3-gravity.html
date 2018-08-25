@@ -1,0 +1,120 @@
+<html>
+  <head>
+    <meta charset="utf8">
+  </head>
+  <body>
+    <canvas id="canvas1" width="800" height="600" style="border: 1px solid black;"></canvas>
+    <script type="text/javascript">
+      'use strict';
+      // Script here
+      var canvas = document.getElementById('canvas1');
+      var ctx = canvas.getContext('2d');
+
+
+      // ================  DESCRIPTION  ================ //
+      // Здесь добавлена гравитация
+      // =================  FUNCTIONS  ================= //
+
+      /* 
+       * Возвращает случайное число между min и max
+      */
+      var random = function(min, max) {
+        return Math.round(Math.random() * (max - min)) + min;
+      };
+
+      /* 
+       * Рисует круг с координатами центра x и y, радиусом r и цветом color
+      */
+      var drawCircle = function(x, y, r, color) {
+        ctx.fillStyle = color;
+        ctx.beginPath();
+        ctx.arc(x, y, r, 0, 2 * Math.PI);
+        ctx.fill();
+      };
+
+      /* 
+       * Стирает (закрашивает белым) прямоугольник с координатами x и y, шириной width, и высотой height
+      */
+      var erase = function(x, y, width, height) {
+        ctx.fillStyle = 'white';
+        ctx.fillRect(x, y, width, height);
+      };
+      // ===============  FUNCTIONS END  =============== //
+
+
+      // ================  CODE BEGINS  ================ //
+
+      const ballR       = 10;                       // Радиус шарика
+      const g           = 0.1;                      // ускорение свободного падения
+
+      var ballX         = random(0, canvas.width);  // Координаты шарика. Начальное значение выбирается рандомно.
+      var ballY         = random(0, canvas.height);
+      var lastX         = ballX;                    // Тут будем хранить координаты, на которых рисовали шарик в прошлый раз.
+      var lastY         = ballY;
+
+      // Энергия шарика. Так как он находится в верхней точке, кинетическая энергия равна 0
+      // Потенциальная энергия это m * g * h, здесь считаем что масса шарика 1
+      // Поэтому эрергия численно равна расстоянию до пола
+      // так как энергия сохраняется и переходит из кинетической в потенциальную, то энергия здесь - константа
+      const energy      = (canvas.height - ballY) * g;
+
+      var ballXVel      = random(2, 5);            // Скорость шарика по X !!! теперь рандом
+      var ballYVelSign  = 1;
+      // !!! Скорость по Н убираем, потому что она везде разная
+
+      var animate = function() {                    // Прорисовка кадра
+        // !!! эта функция не меняется с прошлого примера, что приятно. Это - один из плюсов разделения прорисовки и просчёта
+        // Сперва, стираем шарик.
+        // стираем на тех координатах где он был в прошлую прорисовку
+        erase(lastX - ballR - 1, lastY - ballR - 1, ballR * 2 + 2, ballR * 2 + 2);      
+
+        // Рисуем шарик
+        drawCircle(ballX, ballY, ballR, 'rgb(128, 128, 255)');
+
+        // Сохраняем координаты на которых нарисоввали шарик. В следующий раз стирать будем тут.
+        lastX = ballX;
+        lastY = ballY;
+      };
+
+      var calculate = function() {                  // Эта функция ничего не рисует, только рассчитывает координаты
+        // Потенциальная энергия это расстояние от шарика до пола
+        var potentialE = (canvas.height - ballY) * g;
+        // Кинетическая энергия это разница между полной энергией и потенциальной
+        var kineticE   = energy - potentialE;
+        if (kineticE < 0) {
+          kineticE = 0;
+          ballYVelSign = -ballYVelSign;
+          ballY = canvas.height - energy / g;
+        }
+        // так как Ek = (m * v^2) / 2, то v = sqrt(2 * Ek) / sqrt(m), при m = 1 => v = sqrt(2 * Ek)
+        var ballYVel = Math.sqrt(2 * kineticE) + g;
+
+        // Прежде чем вычислять координаты, проверям столкновение со стенками.
+        // При чём, тут учитывается не текущее положение шарика, а положение которое будет в следующем кадре, если скорость не поменяется.
+        // Если при такой скорости шарик окажется в стене в следующем кадре, то нужно этого не допустить!
+        // Скорость по соответствующей координате будет поменяна на противоположную.
+
+        if ((ballX + ballXVel < ballR) || (ballX + ballXVel > canvas.width - ballR)) {
+          ballXVel = -ballXVel;
+        }
+
+        if ((ballY + ballYVel * ballYVelSign < ballR) || (ballY + ballYVel * ballYVelSign > canvas.height - ballR)) {
+          ballYVelSign = -ballYVelSign;
+        }
+
+        // Вычисляется новое положение шарика
+        ballX = ballX + ballXVel;
+        ballY = ballY + ballYVel * ballYVelSign;
+
+        // Эта функция говорит браузеру, что у нас что-то поменялось и можно нарисовать кадр. Браузер выделит время чтобы это сделать.
+        // Не факт, что это произойдет сразу же. Возможно, прежде чем запустится animate(), успеет запуститься calculate() еще раз,
+        // а то и не раз. Именно поэтому приходится запоминать, где был нарисован шарик.
+        window.requestAnimationFrame(animate);
+      };
+
+      // Повторяем 66 раз в секунду
+      setInterval(calculate, 33);
+
+    </script>
+  </body>
+ </html>
