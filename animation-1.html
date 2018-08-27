@@ -18,15 +18,15 @@
       }
 
       function erase20x20(x, y) {
-        ctx.fillStyle = 'white';
+        ctx.fillStyle = 'grey';
         ctx.fillRect(x, y, x + 20, y + 20);
       }
 
       var i = 1;
 
       var draw = function() {
-        //erase20x20(0 + i, 100);
-        drawRound(i, 100, 'white');
+        erase20x20(i, 100);
+//        drawRound(i, 100, 'white');
 
         i ++;
 
