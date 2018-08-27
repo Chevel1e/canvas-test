@@ -3,60 +3,54 @@
     <meta charset="utf8">
   </head>
   <body>
-    <canvas id="canvas" width="800" height="800"></canvas>
+    <canvas id="canvas1" width="800" height="600" style="border: 1px solid black;"></canvas>
     <script type="text/javascript">
       'use strict';
+      // Script here
+      var canvas = document.getElementById('canvas1');
+      var ctx = canvas.getContext('2d');
+
+      var img = new Image();
+      img.src = 'https://www.sololearn.com/Icons/Avatars/1377924.jpg';
     
-    var sun = new Image();
-    var moon = new Image();
-    var earth = new Image();
+       // получаем координаты точек x и y
+       var centerX = 400
+       var centerY = 300
+       var phi = 1
+       var offset = 150
+       var x1 = centerX + Math.cos(phi * Math.PI / 180) * offset;
+       var y1 = centerY + Math.sin(phi * Math.PI / 180) * offset;
+       
+       console.log(x1, y1);
+
+       var drawAnimation = function draw () {
+
+          var drawClearBar = function () {
+          ctx.fillStyle = "white"; // фон
+          ctx.fillRect (x1, y1, 100, 100);
+          }; 
+          
+          var drawPic = function () {
+            ctx.drawImage(img, x1, y1, 100, 100);
+          };
+
+        phi ++
+
+          if (( phi % 2 ) == 1) {drawPic()
+          } 
+
+          if (( phi % 2 ) == 0) {drawClearBar()
+          } 
+      };
+
+
+        setInterval(drawAnimation, 90);
+
+
+
+
+
     
-    function init(){
-      sun.src = 'https://im0-tub-ru.yandex.net/i?id=acc3cb520892964199275875a94e1bb4&n=13';
-      moon.src = 'https://mdn.mozillademos.org/files/1443/Canvas_moon.png';
-      earth.src = 'https://mdn.mozillademos.org/files/1429/Canvas_earth.png';
-    window.requestAnimationFrame(draw);
-    }
-
-  function draw() {
-  var ctx = document.getElementById('canvas').getContext('2d');
-
-  ctx.globalCompositeOperation = 'destination-over';
-  ctx.clearRect(0,0,400,400); // clear canvas
-
-  ctx.fillStyle = 'rgba(0,0,0,0.4)';
-  ctx.strokeStyle = 'rgba(0,153,255,0.4)';
-  ctx.save();
-  ctx.translate(150,150);
-
-  // Earth
-  var time = new Date();
-  ctx.rotate( ((2*Math.PI)/60)*time.getSeconds() + ((2*Math.PI)/60000)*time.getMilliseconds() );
-  ctx.translate(105,0);
-  ctx.drawImage(earth,-12,-12);
-
-  // Moon
-  ctx.save();
-  ctx.rotate( ((2*Math.PI)/6)*time.getSeconds() + ((2*Math.PI)/6000)*time.getMilliseconds() );
-  ctx.translate(0,28.5);
-  ctx.drawImage(moon,-3.5,-3.5);
-  ctx.restore();
-
-  ctx.restore();
-  
-  ctx.beginPath();
-  ctx.arc(150,150,105,0,Math.PI*2,false); // Earth orbit
-  ctx.stroke();
- 
-  ctx.drawImage(sun,100,100,100,100);
-
-  window.requestAnimationFrame(draw);
-}
-
-init();
-
-
-
-  </script>
-</body>
-</html>
+    </script>
+  </body>
+ </html>
