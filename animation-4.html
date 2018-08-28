@@ -17,7 +17,7 @@
       var centerX = 400;
       var centerY = 300;
       var phi = 1;
-      var offset = 150;
+      var offset = 200;
       var x1 = centerX + Math.cos(phi * Math.PI / 180) * offset;
       var y1 = centerY + Math.sin(phi * Math.PI / 180) * offset;
        
@@ -37,8 +37,8 @@
         x1 = centerX + Math.cos(phi * Math.PI / 180) * offset;
         y1 = centerY + Math.sin(phi * Math.PI / 180) * offset;
 
-        drawPic(x1, y1); 
         drawClearBar(x1, y1);
+        drawPic(x1, y1); 
 
  
         /*if (( phi % 2 ) == 1) {
