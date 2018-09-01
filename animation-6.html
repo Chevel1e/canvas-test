@@ -17,27 +17,28 @@
       };*/
 
      function drawDroplet (y, color) {
-     ctx.arc (20,20 + y,10,0,Math.PI);
-     ctx.moveTo          (10, y + 20);
-     ctx.lineTo          (20, y + 0);
-     ctx.lineTo          (30, y + 20)
-     ctx.fillStyle = color
-     ctx.fill();   
+       ctx.beginPath();
+       ctx.arc (20,20 + y,10,0,Math.PI);
+       ctx.moveTo          (10, y + 20);
+       ctx.lineTo          (20, y + 0);
+       ctx.lineTo          (30, y + 20)
+       ctx.fillStyle = color
+       ctx.fill();   
      }
 
      var i = 10
 
      var draw = function() {
     
-       drawDroplet (i, "white")
+       drawDroplet (i - 1, "white")
 
-       i ++;
+       i += 3;
 
        drawDroplet (i, blue) 
 
      };
 
-      setInterval(draw, 100);
+    setInterval(draw, 30);
 
 
 
