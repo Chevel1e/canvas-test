@@ -35,7 +35,7 @@
         ctx.fill();   
       };
 
-      var rX = random(0, canvas.width);
+      var rX;// = random(0, canvas.width);
       var i = 10;
       var x = 0;
 
@@ -44,7 +44,11 @@
         i += 3;
         drawDroplet (x, i, white);
         
-        if (i >= 750) {i = -50, x = rX}; // как добиться рандомного X, каждый раз, когда i >= 750 ? 
+        if (i >= 750) {
+          i = -50;
+          rX = random(0, canvas.width);
+          x = rX;
+        } // как добиться рандомного X, каждый раз, когда i >= 750 ? 
       }; 
 
       setInterval(draw, 10);
