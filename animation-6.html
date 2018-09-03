@@ -9,48 +9,45 @@
       // Script here
       var canvas    = document.getElementById('canvas1');
       var ctx       = canvas.getContext('2d');
+      var white = "rgba(255,250,250,0.5)"
 
-      var blue = "rgba(100,149,237,0.5)"
+      var img = new Image();
+      img.src = "http://s1.1zoom.me/b5050/406/Vocaloid_Rain_Hatsune_473301_1280x720.jpg";
+        
+      img.onload = function() {
+        var pattern = ctx.createPattern(img, "repeat");
+        ctx.fillStyle = pattern;
+        ctx.fillRect(0, 0, 1080, 720);
+        ctx.strokeRect(0, 0, 1080, 720);
+      };
 
-      /*var r = function(min, max) {
+      var random = function(min, max) {
         return Math.round(Math.random() * (max - min)) + min;
-      };*/
+      };
 
-     function drawDroplet (y, color) {
-       ctx.beginPath();
-       ctx.arc (20,20 + y,10,0,Math.PI);
-       ctx.moveTo          (10, y + 20);
-       ctx.lineTo          (20, y + 0);
-       ctx.lineTo          (30, y + 20)
-       ctx.fillStyle = color
-       ctx.fill();   
-     }
+      function drawDroplet (x, y, color) {
+        ctx.beginPath();
+        ctx.arc (x + 20, y + 20, 10, 0, Math.PI);
+        ctx.moveTo          (x + 10, y + 20);
+        ctx.lineTo          (x + 20, y + 0);
+        ctx.lineTo          (x + 30, y + 20);
+        ctx.fillStyle = color;
+        ctx.fill();   
+      };
 
-     var i = 10
+      var rX = random(0, canvas.width);
+      var i = 10;
+      var x = 0;
 
-     var draw = function() {
-    
-       drawDroplet (i - 1, "white")
+      var draw = function() {
+        img.onload ();
+        i += 3;
+        drawDroplet (x, i, white);
+        
+        if (i >= 750) {i = -50, x = rX}; // как добиться рандомного X, каждый раз, когда i >= 750 ? 
+      }; 
 
-       i += 3;
-
-       drawDroplet (i, blue) 
-
-     };
-
-    setInterval(draw, 30);
-
-
-
-
-     /*drawDroplet(1)
-     drawDroplet(10)
-     drawDroplet(20)*/
-
-     //"rgba(100,149,237,0.5)"
-     
-
-     
+      setInterval(draw, 10);
 
 
 
