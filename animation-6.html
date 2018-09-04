@@ -11,6 +11,11 @@
       var ctx       = canvas.getContext('2d');
       var white = "rgba(255,250,250,0.5)";
 
+
+      ctx.strokeStyle = "pink";
+      ctx.moveTo  (900, 0)
+      ctx.lineTo (940, 20)
+
       var img = new Image();
       img.src = "http://s1.1zoom.me/b5050/406/Vocaloid_Rain_Hatsune_473301_1280x720.jpg";
         
@@ -35,7 +40,7 @@
         ctx.fill();   
       }
 
-      var rX;// = random(0, canvas.width);
+      var rX;
       var i = 10;
       var x = 0;
 
@@ -52,6 +57,10 @@
       }; 
 
       setInterval(draw, 10);
+
+
+
+      
 
 
 
