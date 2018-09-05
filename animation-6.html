@@ -38,31 +38,37 @@
       var i = 10;
       var i2 = 10;
       var i3 = 10;
+      var i4 = 10;
       var x = 0;
       var x2 = 0;
       var x3 = 0;
+      var x4 = 0;
 
       var draw = function() {
         img.onload ();
-        i += 3;
-        i2 += 3;
-        i3 += 3;
+        i += 2;
+        i2 += 2;
+        i3 += 2;
+        i4 += 2;
         
         drawDroplet (x, i, white);
         drawDroplet (x2, i2, white);
         drawDroplet (x3, i3, white);
+        drawDroplet (x4, i4, white);
 
-        if (i >= 1400) {
-          i = -random(-10, -700);
-          i2 = random(-10, -700);
+        if (i, i2, i3, i4 >= 1420) {
+          i = -random(-10, -600);
+          i2 = random(-10, -500);
           i3 = random(-10, -700);
+          i4 = random(-10, -300);
           x = random(0, canvas.width);
           x2 = random(0, canvas.width);
           x3 = random(0, canvas.width);
+          x4 = random(0, canvas.width);
         } 
       }; 
 
-      setInterval(draw, 5);
+      setInterval(draw, 6);
 
 
 
