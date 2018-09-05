@@ -11,11 +11,6 @@
       var ctx       = canvas.getContext('2d');
       var white = "rgba(255,250,250,0.5)";
 
-
-      ctx.strokeStyle = "pink";
-      ctx.moveTo  (900, 0)
-      ctx.lineTo (940, 20)
-
       var img = new Image();
       img.src = "http://s1.1zoom.me/b5050/406/Vocaloid_Rain_Hatsune_473301_1280x720.jpg";
         
@@ -32,31 +27,42 @@
 
       function drawDroplet (x, y, color) {
         ctx.beginPath();
-        ctx.arc (x + 20, y + 20, 10, 0, Math.PI);
+        ctx.arc             (x + 20, y + 20, 10, 0, Math.PI);
         ctx.moveTo          (x + 10, y + 20);
         ctx.lineTo          (x + 20, y + 0);
         ctx.lineTo          (x + 30, y + 20);
-        ctx.fillStyle = color;
+        ctx.fillStyle =     color;
         ctx.fill();   
       }
 
-      var rX;
       var i = 10;
+      var i2 = 10;
+      var i3 = 10;
       var x = 0;
+      var x2 = 0;
+      var x3 = 0;
 
       var draw = function() {
         img.onload ();
         i += 3;
-        drawDroplet (x, i, white);
+        i2 += 3;
+        i3 += 3;
         
-        if (i >= 750) {
-          i = -50;
-          rX = random(0, canvas.width);
-          x = rX;
+        drawDroplet (x, i, white);
+        drawDroplet (x2, i2, white);
+        drawDroplet (x3, i3, white);
+
+        if (i >= 1400) {
+          i = -random(-10, -700);
+          i2 = random(-10, -700);
+          i3 = random(-10, -700);
+          x = random(0, canvas.width);
+          x2 = random(0, canvas.width);
+          x3 = random(0, canvas.width);
         } 
       }; 
 
-      setInterval(draw, 10);
+      setInterval(draw, 5);
 
 
 
