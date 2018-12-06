@@ -1,0 +1,112 @@
+<html>
+  <head>
+    <meta charset="utf8">
+  </head>
+  <body>
+    <canvas id="canvas1" width="800" height="600" style="border: 1px solid pink;"></canvas>
+    <script type="text/javascript">
+      'use strict';
+      // Script here
+
+      var canvas    = document.getElementById('canvas1');
+      var ctx       = canvas.getContext('2d');
+
+      ctx.fillStyle = "rgba(202,225,225,0.5)";
+      ctx.fillRect (0, 0, 800, 600);  
+
+      ctx.fillStyle = "pink";
+      ctx.fillRect (0, 300, 800, 1);
+
+      function drawTriangle15x30x0 (x1, y1, x2, y2, x3, y3, color) {
+          ctx.beginPath();
+          ctx.moveTo      (x1, y1);
+          ctx.lineTo      (x2, y2);
+          ctx.lineTo      (x3, y3);
+          ctx.fillStyle = "pink";
+          ctx.fill();
+      }
+
+      function drawTriangle30x45x15 (x1, y1, x2, y2, x3, y3, color) {
+          ctx.beginPath();
+          ctx.moveTo      (x1, y1);
+          ctx.lineTo      (x2, y2);
+          ctx.lineTo      (x3, y3);
+          ctx.fillStyle =   "rgb(255, 240, 250)";
+          ctx.fill();
+      }
+
+      function drawTriangleLine (x1, y1, x2, y2, x3, y3, color) {
+        ctx.beginPath();
+        ctx.moveTo          (x1, y1);
+        ctx.lineTo          (x2, y2);
+        ctx.lineTo          (x3, y3); 
+        ctx.strokeStyle =    "white";
+        ctx.closePath();
+        ctx.stroke();
+      }
+
+
+      var drawTriangleUp = function (x1, x2, x3, y) { 
+        drawTriangle15x30x0 (x1, y + 0, x2, y + 25, x3, y + 25);
+      };
+
+      var drawTriangleDown = function (x1, x2, x3, y) {
+        drawTriangle30x45x15 (x1, y + 25, x2, y + 0, x3, y + 0);
+      };
+
+      var drawBigTriangle = function (x1, y1, x2, x3) {
+        drawTriangle15x30x0 (x1, y1, x2, 290, x3, 290);
+      };
+
+      var drawBigTriangleLine = function (x1, y1, x2, x3) {
+        drawTriangleLine (x1, y1, x2, 310, x3, 310);
+      };
+
+
+      // var i = 0 это инициализация цикла, т.е то, что делается до цикла
+      // i < 100 это условие продолжения цикла, т.е. всё будет повторяться пока i < 100
+      // i ++ это то что делается в конце каждого цикла
+
+      for(var i = 0; i < 100; i ++) {
+        drawTriangleUp(15 + i * 30, 30 + i * 30, 0 + i * 30, 0); 
+        drawTriangleDown(30 + i * 30, 45 + i * 30, 15 + i * 30, 0);
+      }
+
+      for(var x = -15; x < canvas.width; x = x + 30) {
+        drawTriangleUp(15 + x, 30 + x, 0 + x, 26); 
+        drawTriangleDown(30 + x, 45 + x, 15 + x, 26);
+      }
+
+      // Цикл do-while продолжается пока истинно выражение при while, т.е. x < canvas.width
+      // Все циклы for(;;) можно привести к циклам do-while и внутри интерпретатора так и происходит
+      // применяется редко
+      
+      x = 0;
+      do {
+        drawTriangleUp(15 + x, 30 + x, 0 + x, 52); 
+        drawTriangleDown(30 + x, 45 + x, 15 + x, 52);
+
+        x = x + 30;
+      } while (x < canvas.width);
+      // конец цикла do-while
+
+      // Цикл while позволяет проверить условие до начала цикла
+      // с такой конструкцией возможно сделать так что цикл вообще не выполнит ни одной итерации
+      x = 0;
+      while(x < canvas.width) {
+        drawTriangleUp(15 + x, 30 + x, 0 + x, 78); 
+        drawTriangleDown(30 + x, 45 + x, 15 + x, 78);
+
+        x = x + 30;
+      }
+
+      drawBigTriangle(400, 150, 500, 300);
+      drawBigTriangleLine(400, 450, 500, 300);
+      drawBigTriangle(100, 200, 150, 50);
+      drawBigTriangleLine(100, 400, 150, 50);
+      drawBigTriangle(700, 200, 650, 750);
+      drawBigTriangleLine(700, 400, 650, 750);
+
+    </script>
+  </body>
+ </html>
